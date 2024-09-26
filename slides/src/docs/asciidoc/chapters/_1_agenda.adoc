@@ -1,5 +1,5 @@
 [background-color="#02303a"]
-=== Agenda
+== Agenda
 image::gradle/bg-10.png[background, size=cover]
 
 [%step]
