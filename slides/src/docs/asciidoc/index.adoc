@@ -1,0 +1,22 @@
+:source-highlighter: highlightjs
+:highlightjs-languages: java, groovy, kotlin, toml, json, xml, properties, shell
+:title-slide-background-image: Webinar_Gradle9.png
+:title-slide-background-size: cover
+:title-slide-background-color: #02303a
+:hide-uri-scheme:
+
+[[first-slide]]
+[%notitle]
+= Gradle 9 Webinar
+
+include::chapters/_1_agenda.adoc[]
+
+include::chapters/_2_general.adoc[]
+
+include::chapters/_3_build-comprehensibility.adoc[]
+
+include::chapters/_4_performance.adoc[]
+
+include::chapters/_5_peek-future.adoc[]
+
+include::chapters/_6_conclusion.adoc[]

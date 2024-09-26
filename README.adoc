@@ -1,0 +1,19 @@
+= Gradle 9 is coming! What's in it for developers?
+
+Louis Jacomet <louis@gradle.com>
+
+Slides for Gradle webinar on Gradle 9
+
+== Slides and recording
+
+TODO
+
+== Abstract
+
+The release of Gradle Build Tool 9.0 is approaching—so what should developers know?
+
+Gradle 9 is packed with features that continue to evolve the developer UX.
+One focus is on scalability—making builds and tests as fast as possible, even for massive projects.
+Another focus is on comprehensibility—making Gradle easier to adopt and use for teams of any size and skill level.
+
+Join Louis Jacomet, Senior Lead Software Engineer at Gradle Inc., conference speaker and community organizer, to learn more about what’s coming in Gradle 9.

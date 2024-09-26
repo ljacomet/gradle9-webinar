@@ -1,0 +1,13 @@
+[background-color="#02303a"]
+=== Agenda
+image::gradle/bg-10.png[background, size=cover]
+
+[%step]
+* Core evolutions
+* Build comprehensibility
+** Help messages
+** Provider API & laziness
+* Build scalability
+** Primary strategies
+** Configuration cache
+* Gradle 9 and beyond

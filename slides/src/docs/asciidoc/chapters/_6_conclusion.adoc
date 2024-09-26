@@ -1,0 +1,25 @@
+[background-color="#02303a"]
+== Q & A
+image::gradle/bg-8.png[background, size=cover]
+
+[cols="^.^2,^.^1",frame=none,grid=none,role=who-gradle]
+|===
+a|Thank you for your attention!
+
+image::louis.png[]
+
+[source,kotlin]
+----
+speaker {
+    name = "Louis Jacomet"
+    twitter = "@ljacomet"
+    mastodon = "@ljacomet@foojay.social"
+    github = "ljacomet"
+}
+----
+a|
+|===
+
+[%notitle]
+=== Survey
+image::survey.png[size=cover]

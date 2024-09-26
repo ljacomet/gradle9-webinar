@@ -1,0 +1,143 @@
+[background-color="#02303a"]
+== Gradle 9 and beyond
+image::gradle/bg-4.png[background, size=cover]
+
+&#x1F52E;
+
+[background-color="#02303a"]
+=== Gradle 9 objectives
+image::gradle/bg-4.png[background, size=cover]
+
+🐘
+
+[.notes]
+****
+Louis
+****
+
+=== Gradle 9 objectives
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* 🐘 Core updates
+* &#x1F4A1; Comprehensibility
+* &#x1F680; Scalability
+
+=== Gradle 9 - 🐘 Core updates
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* Kotlin Language 2.0 support in our Kotlin DSL
+* Use the K2 compiler and benefit from its performance
+* Groovy 4
+* Tools and libraries updates
+* Many bug fixes and improvements
+
+=== Gradle 9 - &#x1F4A1; Comprehensibility
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* Provider API 1.0
+** Feature complete for supported use cases
+* Provider API Migration
+** Binary compatible migration for 3rd party plugins
+** Source-compatible migration for local build logic
+* Problems API
+
+=== Gradle 9 - &#x1F680; Scalability
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* Configuration Cache recommended
+[%step]
+** Deprecation warning if not enabled in later 9.x
+
+=== Gradle 9.0 timeline
+image::gradle/bg-4.png[background, size=cover]
+
+* Q1 2025 release (tentative)
+* link:https://github.com/orgs/gradle/projects/31/views/1[gradle-roadmap]
+
+image::roadmap.png[]
+
+[background-color="#02303a"]
+=== Ongoing work
+image::gradle/bg-4.png[background, size=cover]
+
+=== Configuration cache limitations
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* What about the work of the build engineer?
+* What about dependency upgrades and other build focused engineering tasks?
+
+[.notes]
+****
+* Invalidation
+* No Remote  Cache
+****
+
+=== Did you say cache miss?
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* On a miss, the configuration phase needs to run
+* But, with no shared mutable state between projects, it could
+[%step]
+** Run in parallel
+*** following the projects hierarchy
+** Be cached incrementally
+*** task sub-graphs cached per project
+
+=== Isolated Projects Status
+image::gradle/bg-7.png[background, size=cover]
+
+* Alpha experiment on top of the Configuration Cache
+* Interesting for early adopters
+* Focuses on speeding up the IDE experience first
+
+[.notes]
+****
+* We're really close to have IntelliJ and Gradle ready for early adopters
+****
+
+[background-color="#02303a"]
+=== Declarative Gradle
+image::gradle/bg-4.png[background, size=cover]
+
+🐘
+
+=== Declarative Gradle
+image::gradle/bg-4.png[background, size=cover]
+
+> The presence of code constructs in the software definition, such as variables, local methods and conditional expressions, makes it hard for software developers to work with the build.
+>
+> It also makes refactoring more difficult for the IDE and other tools to implement.
+
+[.notes]
+****
+* While it has long been a best practice that build scripts should be declarative, and the build logic should be kept in plugins, this is not the reality for many projects.
+* We’ve seen projects in the wild that mix declarative and imperative code and make build scripts that are long and complex.
+* Gradle-specific concepts used in build scripts are not always familiar to software developers.
+* This can make Gradle less approachable for developers unfamiliar with Gradle.
+* At the same time, it makes it difficult for the IDEs to offer reliable support for editing build scripts.
+****
+
+=== Declarative Gradle
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* Clear separation of software definition from build logic
+* Declarative configuration language
+* Raised abstraction
+* First class IDE experience
+
+=== Declarative Gradle
+image::gradle/bg-4.png[background, size=cover]
+
+[%step]
+* New *experimental* initiative
+* Working group with Google, JetBrains and Gradle.
+* First EAP available
+* Second EAP in October 2024
+* See declarative.gradle.org

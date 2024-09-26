@@ -1,0 +1,173 @@
+[background-color="#02303a"]
+== Build scalability
+image::gradle/bg-7.png[background, size=cover]
+
+&#x1F680;
+
+[background-color="#02303a"]
+=== Guiding principles
+image::gradle/bg-7.png[background, size=cover]
+
+[%notitle]
+=== Guiding principles
+image::gradle/bg-7.png[background, size=cover]
+
+> Overhead should be proportional to the impact of the change
+
+=== Prioritization based on use-cases
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* Inner developer loop
+** Code, Build and Test
+* Outer developer loop
+** Sync
+** Integrate
+*** Stateful CI/CD
+*** Ephemeral CI/CD
+
+=== Gradle build anatomy
+image::gradle/bg-7.png[background, size=cover]
+
+image::gradle-build-anatomy.png[]
+
+[.small.right.top-margin]
+*Bars not to scale*
+
+[background-color="#02303a"]
+=== Primary strategies
+image::gradle/bg-7.png[background, size=cover]
+
+=== Performance focus
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* Work avoidance
+* Parallelism
+
+=== Execution work avoidance
+image::gradle/bg-7.png[background, size=cover]
+
+* Up-to-date tasks
+* Output caching
+** Tasks
+** And more
+** Local and remote
+* Incremental tasks
+
+=== Execution work avoidance with Develocity
+image::gradle/bg-7.png[background, size=cover]
+
+* Remote caching of outputs
+* Predictive test selection
+
+=== Execution parallelism
+image::gradle/bg-7.png[background, size=cover]
+
+* Parallel task execution
+* Worker API
+* Parallel test execution
+
+=== Execution parallelism with Develocity
+image::gradle/bg-7.png[background, size=cover]
+
+* Test Distribution
+
+[background-color="#02303a"]
+=== Configuration work avoidance
+image::gradle/bg-7.png[background, size=cover]
+
+=== Gradle Configuration Cache
+image::gradle/bg-7.png[background, size=cover]
+
+* The Configuration Cache is
+[%step]
+** a feature that significantly improves the inner developer loop performance
+** by caching the result of the configuration phase
+** and reusing this for subsequent builds.
+
+=== What is cached?
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* Task graph
+* Task inputs
+* All the rest is discarded
+** No `project` state anymore
+
+=== Example of invalid input
+image::gradle/bg-7.png[background, size=cover]
+
+[source,kotlin]
+----
+abstract class SomeTask : DefaultTask() {
+
+    @get:Input lateinit var sourceSet: SourceSet
+
+    @TaskAction
+    fun action() {
+        val classpathFiles = sourceSet.compileClasspath.files
+        // Do something with the files
+    }
+}
+----
+
+needs to become
+
+[source,kotlin]
+----
+abstract class SomeTask : DefaultTask() {
+
+    @get:InputFiles @get:Classpath
+    abstract val classpath: ConfigurableFileCollection
+
+    @TaskAction
+    fun action() {
+        val classpathFiles = classpath.files
+        // Do something with the files
+    }
+}
+----
+
+configured with
+
+[source,kotlin]
+----
+classpath.from(sourceSet.compileClasspath)
+----
+
+[background-color="#02303a"]
+=== Demo
+image::gradle/bg-7.png[background, size=cover]
+
+[.notes]
+****
+* sooner
+* intra project parallel
+****
+
+=== Additional benefits
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* Better parallelism at execution
+** Intra project task parallelism
+* Reduced memory usage on CC hits
+** No configuration state is created
+
+=== Can I use it on my build?
+image::gradle/bg-7.png[background, size=cover]
+
+[%step]
+* It depends on your build
+** You may have to refactor custom build-logic
+* Most widely plugins out there are already compatible
+* You can selectively declare incompatible tasks +
+  [.small]#`tasks.some { notCompatibleWithConfigurationCache("because") }`#
+
+* This is about applying best practices anyway
+
+[.notes]
+****
+* The amount of required work will directly depend on the 3rd party plugins you use and the amount of custom build logic you have.
+****
