@@ -9,4 +9,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = "devoxxbe-gradle9"
+rootProject.name = "gradle9-webinar"
